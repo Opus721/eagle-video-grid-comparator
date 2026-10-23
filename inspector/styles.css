@@ -1,0 +1,118 @@
+:root {
+  color-scheme: light;
+  --button-bg: #ececef;
+  --button-hover: #e2e2e6;
+  --button-active: #d9d9de;
+  --text: #29292d;
+  --muted: #7c7c83;
+  --accent: #8054ca;
+}
+
+body[theme="DARK"],
+body[theme="GRAY"],
+body[theme="BLUE"],
+body[theme="PURPLE"] {
+  color-scheme: dark;
+  --button-bg: #24252a;
+  --button-hover: #2d2e34;
+  --button-active: #36373d;
+  --text: #f4f4f6;
+  --muted: rgba(248, 249, 251, 0.48);
+  --accent: #b597f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  align-items: center;
+}
+
+.compare-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 34px;
+  gap: 9px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 0;
+  background: var(--button-bg);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  transition: background 90ms ease, opacity 90ms ease;
+}
+
+.compare-button:hover:not(:disabled) {
+  background: var(--button-hover);
+}
+
+.compare-button:active:not(:disabled) {
+  background: var(--button-active);
+}
+
+.compare-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.compare-button:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
+.compare-icon {
+  display: block;
+  width: 20px;
+  height: 15px;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.compare-icon .compare-frames {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  opacity: 0.72;
+  vector-effect: non-scaling-stroke;
+}
+
+.compare-icon .compare-rail,
+.compare-icon .compare-playhead {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.selection-count {
+  margin-left: auto;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 10.5px;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compare-button {
+    transition: none;
+  }
+}

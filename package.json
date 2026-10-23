@@ -1,0 +1,25 @@
+{
+  "name": "eagle-video-grid-comparator",
+  "version": "1.4.0",
+  "private": true,
+  "description": "Eagle plugin for synchronized side-by-side comparison of two to four videos.",
+  "license": "MIT",
+  "homepage": "https://github.com/Opus721/eagle-video-grid-comparator#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Opus721/eagle-video-grid-comparator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Opus721/eagle-video-grid-comparator/issues"
+  },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "test": "node tests/package.test.mjs",
+    "check": "npm run validate && npm test",
+    "package": "node scripts/package.mjs",
+    "sync:eagle": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-eagle.ps1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

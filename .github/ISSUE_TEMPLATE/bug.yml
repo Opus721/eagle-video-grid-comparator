@@ -1,0 +1,35 @@
+name: Bug report
+description: Record a reproducible comparator problem.
+title: "bug: "
+labels: [bug]
+body:
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Eagle version, OS version, plugin version, and relevant codecs.
+      placeholder: Eagle 4.x, Windows 11, plugin 1.4.0, MP4/H.264
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Minimal steps, including whether 2, 3, or 4 videos were selected.
+      placeholder: |
+        1. Select ...
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs, screenshots, or a redacted sample when safe. Do not attach private media unless needed.

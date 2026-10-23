@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="color-scheme" content="dark light">
+  <title>Video Compare</title>
+  <link rel="stylesheet" href="styles.css?v=1.4.0">
+  <script defer src="inspector.js?v=1.4.0"></script>
+</head>
+<body>
+  <button class="compare-button" id="compareButton" type="button" disabled>
+    <svg class="compare-icon" viewBox="0 0 24 18" aria-hidden="true">
+      <path class="compare-frames" d="M1.5 1.5h8v10h-8zM14.5 1.5h8v10h-8z"></path>
+      <path class="compare-rail" d="M1.5 15.5h21"></path>
+      <path class="compare-playhead" d="M12 13v5"></path>
+    </svg>
+    <span id="compareLabel">Compare</span>
+    <span class="selection-count" id="selectionCount">2–4</span>
+  </button>
+</body>
+</html>

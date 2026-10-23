@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose a scoped comparison-workflow improvement.
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Current workflow
+      description: What are you comparing, and where do extra clicks or friction appear?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe observable behavior, not just an implementation idea.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Compatibility, layout, performance, or Eagle-safety constraints.

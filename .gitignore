@@ -1,0 +1,19 @@
+# Dependencies and generated packages
+node_modules/
+artifacts/
+dist/
+*.eagleplugin
+
+# Environment files
+.env
+.env.*
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

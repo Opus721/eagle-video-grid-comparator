@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing SemVer tag to publish
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Validate, package, and publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          ref: ${{ env.RELEASE_TAG }}
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+      - name: Install repository metadata
+        run: npm ci --ignore-scripts
+      - name: Validate repository
+        run: npm run check
+      - name: Verify release tag
+        run: node scripts/verify-release.mjs "$RELEASE_TAG"
+      - name: Build package
+        run: npm run package
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          asset="$(find artifacts -maxdepth 1 -type f -name '*.eagleplugin' -print -quit)"
+          test -n "$asset"
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" "$asset" --clobber
+          else
+            gh release create "$RELEASE_TAG" "$asset" \
+              --verify-tag \
+              --generate-notes \
+              --title "Video Grid Comparator $RELEASE_TAG"
+          fi

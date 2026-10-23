@@ -1,0 +1,44 @@
+{
+  "id": "3c8cd4a3-b779-4c25-9436-6f29963fcd34",
+  "version": "1.4.0",
+  "platform": "all",
+  "arch": "all",
+  "name": "Video Grid Comparator",
+  "logo": "/logo.png",
+  "keywords": [
+    "video",
+    "compare",
+    "sync",
+    "grid"
+  ],
+  "devTools": false,
+  "main": {
+    "serviceMode": false,
+    "url": "index.html",
+    "opacity": 0,
+    "width": 760,
+    "height": 760,
+    "minWidth": 640,
+    "minHeight": 560,
+    "backgroundColor": "#202124",
+    "alwaysOnTop": false,
+    "frame": true,
+    "fullscreenable": true,
+    "maximizable": true,
+    "minimizable": true,
+    "resizable": true,
+    "multiple": false,
+    "show": false,
+    "runAfterInstall": false
+  },
+  "preview": {
+    "mp4,mov,m4v,webm,mkv,avi,wmv,mpg,mpeg,m2ts,ts": {
+      "inspector": {
+        "name": "Video Compare",
+        "path": "inspector/index.html",
+        "height": 54,
+        "multiSelect": true
+      }
+    }
+  }
+}

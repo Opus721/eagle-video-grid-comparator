@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="color-scheme" content="dark light">
+  <title>Video Grid Comparator</title>
+  <link rel="stylesheet" href="css/styles.css?v=1.4.0">
+  <script defer src="js/plugin.js?v=1.4.0"></script>
+</head>
+<body>
+  <main class="app" id="app" aria-busy="true">
+    <header class="topbar">
+      <div class="brand" aria-label="Video Grid Comparator">
+        <svg class="brand-mark" viewBox="0 0 24 18" aria-hidden="true">
+          <path class="compare-frames" d="M1.5 1.5h8v10h-8zM14.5 1.5h8v10h-8z"></path>
+          <path class="compare-rail" d="M1.5 15.5h21"></path>
+          <path class="compare-playhead" d="M12 13v5"></path>
+        </svg>
+        <span class="brand-name">Video Grid Comparator</span>
+      </div>
+
+      <div class="topbar-meta">
+        <span class="key-hint">Wheel to zoom <i></i> Space to play <i></i> Esc to close</span>
+        <span class="status-pill" id="statusPill">Waiting for Eagle</span>
+        <button class="text-button" id="reloadButton" type="button" title="Reload the current Eagle selection">
+          Reload
+        </button>
+      </div>
+    </header>
+
+    <section class="viewer" aria-label="Synchronized video comparison">
+      <div class="video-grid" id="videoGrid" aria-live="polite"></div>
+
+      <div class="empty-state" id="emptyState">
+        <svg class="empty-icon" viewBox="0 0 88 54" aria-hidden="true">
+          <path class="compare-frames" d="M2 2h35v34H2zM51 2h35v34H51z"></path>
+          <path class="empty-play" d="M16 13l10 6-10 6zM65 13l10 6-10 6z"></path>
+          <path class="compare-rail" d="M2 48h84"></path>
+          <path class="compare-playhead" d="M44 42v12"></path>
+        </svg>
+        <p class="empty-kicker" id="emptyKicker">Video comparison</p>
+        <h1 id="emptyTitle">Select 2–4 videos in Eagle</h1>
+        <p id="emptyMessage">Select the clips, then press <strong>Compare</strong> in the Eagle inspector.</p>
+      </div>
+    </section>
+
+    <footer class="transport" aria-label="Shared playback controls">
+      <div class="transport-primary">
+        <button class="icon-button" id="restartButton" type="button" title="Restart (Home)" aria-label="Restart" disabled>
+          <svg class="control-icon" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M5.5 6H2.5V3"></path>
+            <path d="M3.1 6a7 7 0 1 1-.1 7.8"></path>
+          </svg>
+        </button>
+        <button class="play-button" id="playButton" type="button" title="Play or pause (Space)" aria-label="Play" disabled>
+          <span class="play-glyph" id="playIcon" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="timeline-block">
+        <div class="timeline-control">
+          <div class="timeline-track" aria-hidden="true"><span id="timelineProgress"></span></div>
+          <input class="timeline" id="timeline" type="range" min="0" max="1" value="0" step="0.001" aria-label="Shared timeline" disabled>
+        </div>
+        <div class="timeline-readout">
+          <span id="currentTime">00:00.000</span>
+          <span class="time-divider">/</span>
+          <span id="durationTime">00:00.000</span>
+        </div>
+      </div>
+
+      <div class="transport-secondary">
+        <button class="mode-button zoom-button" id="resetViewButton" type="button" title="Reset synchronized zoom (0)" aria-label="Reset synchronized zoom" disabled>
+          <span id="zoomLevel">100%</span>
+        </button>
+        <button class="mode-button" id="loopButton" type="button" title="Toggle loop (L)" aria-pressed="false" disabled>
+          <svg class="control-icon" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 6h10l-2.5-2.5M16 14H6l2.5 2.5"></path>
+          </svg>
+          Loop
+        </button>
+        <label class="speed-control" title="Playback speed">
+          <span class="sr-only">Playback speed</span>
+          <select id="speedSelect" disabled>
+            <option value="0.25">0.25×</option>
+            <option value="0.5">0.5×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.5">1.5×</option>
+            <option value="2">2×</option>
+          </select>
+        </label>
+        <button class="mode-button audio-button" id="audioButton" type="button" title="Cycle audio source (M to mute)" disabled>
+          <svg class="control-icon" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M3 8h3l4-3v10l-4-3H3zM13 7.2a4 4 0 0 1 0 5.6"></path>
+          </svg>
+          <span>Audio</span><span class="audio-source" id="audioSource">01</span>
+        </button>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+</body>
+</html>
